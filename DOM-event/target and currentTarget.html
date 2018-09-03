@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+    <div class="parent">
+        <p class="child">123</p>
+    </div>
+
+    <div class="text">
+        <p class="p">01</p>
+        <p>02</p>
+        <p>03</p>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $('.parent').click(function (e) {
+            let target = e.target;
+            console.log(e.target);//返回子节点  event.target返回触发事件的元素
+            console.log(e.currentTarget);//返回绑定了事件的节点（这里是父节点） event.currentTarget返回绑定事件的元素
+        })
+
+        console.log('abc02ac456a789134'.match(/\d{2}/g));
+
+        console.log($('.text p').text());//010203
+        console.log($('.text p').html());//01
+
+
+    </script>
+ </body>
+</html>

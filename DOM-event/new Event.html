@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+ <div class="test">
+     123
+ </div>
+    <script>
+        var oTest = document.getElementsByClassName('test')[0];
+        oTest.addEventListener('click',function () {
+            console.log('test click');
+            setTimeout(function () {
+                oTest.dispatchEvent(eve);//自定义事件触发
+            },1000);
+
+            setTimeout(function () {
+                oTest.dispatchEvent(customeve);//自定义事件触发
+            },2000);
+        },true)
+
+
+        //1
+        var eve = new Event('click1');//创建事件
+        //注册事件监听器
+        oTest.addEventListener('click1',function () {
+            console.log('click1');
+        })
+
+
+        //2
+        //CustomEvent 可以传事件名和一个对象  对象里面存储自己想要的数据
+        var customeve = new CustomEvent('click2', {
+            detail:{
+                title:'hello',
+            },
+        });
+        oTest.addEventListener('click2',function (e) {
+            console.log(e.detail.title);
+        })
+    </script>
+ </body>
+</html>

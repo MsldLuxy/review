@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+
+    <!--BFC应用场景-->
+    <!--1.防止垂直margin重叠-->
+    <!--BFC原理中有一条说：属于同一BFC的两个相邻的盒子垂直方向的边距会发生重叠-->
+    <!--当我给第三个p标签外面套了一个盒子并创建为BFC时，第三个p与其他两个p标签就不属于同一BFC，此时就不会有垂直方向的边距会发生重叠的现象-->
+    <section class="margin">
+        <style>
+            .margin{
+                background:pink;
+                overflow:hidden;
+            }
+            .margin p{
+                margin:10px 0 20px;
+                background:red;
+            }
+        </style>
+        <p>1</p>
+        <p>2</p>
+        <div style="overflow: auto">
+            <p>3</p>
+        </div>
+    </section>
+
+    <!--2.自适应两栏布局-->
+    <!--当左侧盒子设置浮动，右侧盒子比左侧盒子高度高时，右侧盒子会与浮动的盒子重叠，超出的部分也会与外层盒子左侧接触-->
+    <!--BFC原理中有一条：BFC区域不会与区域外的浮动元素重叠，也就是会在同一水平线上-->
+    <!--所以把右侧的盒子设置为BFC（设置overflow:hidden即可）就可以解决该问题-->
+    <section class="layout">
+        <style>
+            .layout{
+                background:red;
+                overflow: hidden;
+            }
+            .layout .left{
+                float:left;
+                width:100px;
+                height:100px;
+                background:#000;
+            }
+            .layout .right{
+                overflow:auto;
+                height:120px;
+                background:#ccc;
+            }
+        </style>
+        <div class="left"></div>
+        <div class="right"></div>
+    </section>
+
+
+    <!--3.清除内部浮动-->
+    <!--BFC有一条原理：计算BFC高度时，浮动元素也会参与计算-->
+    <!--当不在外层设置BFC时，此时的外层高度为0，设置后会计算内部的浮动元素的高度-->
+
+    <section class="float">
+        <style>
+            .float{
+                background: red;
+                /*overflow:hidden;*/
+                float:left;
+            }
+            .float p{
+                float:left;
+                font-size:32px;
+            }
+        </style>
+        <p>我是浮动元素</p>
+    </section>
+
+    <script>
+
+    </script>
+ </body>
+</html>

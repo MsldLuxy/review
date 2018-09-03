@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        .box{
+            width:200px;
+            height:100px;
+            margin:100px 0 0 200px;
+            padding:10px 20px;
+            border:2px solid #000;
+            background: red;
+        }
+    </style>
+ </head>
+ <body>
+
+    <div class="box"></div>
+
+
+    <script>
+        let oBox = document.getElementsByClassName('box')[0];
+        let w1 = oBox.style.width; //只能获取到内联样式
+//        let w2 = oBox.currentStyle.width;//只支持ie
+        let w3 = getComputedStyle(oBox).width;
+        let w4 = oBox.getBoundingClientRect().height;
+        console.log(w1);
+        console.log(w3);
+        console.log(w4);
+    </script>
+ </body>
+</html>
