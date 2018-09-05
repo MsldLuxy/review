@@ -19,28 +19,7 @@
  <body>
  
     <script>
-        var o1 = {name:'o1'};
-        var o2 = new Object({name:'o2'});
-
-        var M = function (name) {
-            this.name = name;
-        }
-        var o3 = new M('o3');
-
-        var P = {name:'o4'};
-        var o4 = Object.create(P);  //P为o4的原型对象
-
-        //new 原理
-        //func位构造函数
-        var new1 = function (func) {
-            var o = Object.create(func.prototype);
-            var k = func.call(o);//构造函数执行
-            if(typeof k === 'object'){
-                return k;
-            }else {
-                return o;
-            }
-        }
+        
     </script>
  </body>
 </html>
