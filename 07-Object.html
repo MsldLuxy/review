@@ -19,7 +19,20 @@
  <body>
  
     <script>
-        
+        function Animal(){
+            this.name = 'name';
+        }
+
+        class Animal2{
+            constructor(){
+                this.name = 'dog';
+            }
+        }
+
+        var animal = new Animal('dog');
+
+        var animal2 = new Animal2('cat');
+        console.log(animal, animal2);
     </script>
  </body>
 </html>
