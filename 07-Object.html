@@ -19,6 +19,7 @@
  <body>
  
     <script>
+        //类的声明
         function Animal(){
             this.name = 'name';
         }
@@ -29,10 +30,48 @@
             }
         }
 
+        //生成实例
         var animal = new Animal('dog');
 
         var animal2 = new Animal2('cat');
         console.log(animal, animal2);
+
+
+        //类的继承
+        //1借助构造函数实现继承：只实现部分的继承
+        function Parent1(){
+            this.name = 'parent1';
+        }
+
+        Parent1.prototype.say = function(){
+            console.log('say1');
+        }
+
+        function Child1(){
+            Parent1.call(this);//将父类构造函数的this指向子构造函数的实例上
+            this.type = 'child1';
+        }
+        console.log(new Child1);//该方法不会将父类构造函数原型对象上的方法继承下来 这里不会输出say方法
+
+
+        //2借助原型链实现继承
+        function Parent2(){
+            this.name = 'parent2';
+            this.play = [1,2,3];
+        }
+        function Child2(){
+            this.type = 'child2';
+        }
+
+        Child2.prototype = new Parent2();
+
+        var s1 = new Child2();
+        var s2 = new Child2();
+        console.log(s1.play,s2.play);//[1, 2, 3]  [1, 2, 3]
+        s1.play.push(4);
+        console.log(s1.play,s2.play);//[1, 2, 3, 4]  [1, 2, 3, 4] 导致这样的原因是原型链中s1和s2的原型对象是公用的
+
+
     </script>
  </body>
 </html>
