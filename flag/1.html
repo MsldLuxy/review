@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+    <h3>输入：['a','b',[2,3],'d','e',[1,4,['f','g']],'h',5]</h3>
+    <h3>输出：a,b,2,3,d,e,1,4,f,g,h,5</h3>
+    <script>
+        var arr = ['a','b',[2,3],'d','e',[1,4,['f','g']],'h',5];
+        function flag(array) {
+            let res = [];
+            function each(arr) {
+                arr.forEach(item => item instanceof Array ? each(item) : res.push(item))
+            }
+            each(array);
+            return res.join(',');
+        }
+        console.log(flag(arr));
+
+
+
+        var a = [1,2,3];
+        a.push(a.shift())//[1,2,3,4]=>[2,3,4,1]
+        a.unshift(a.pop())//[1,2,3,4]=>[4,1,2,3]
+
+        console.log(a);
+    </script>
+ </body>
+</html>
