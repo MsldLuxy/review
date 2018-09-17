@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+ 
+    <script>
+        var start = '2018-06-23 11:10';
+        var end = '2018-06-23 12:10';
+
+        var countHour = function(s,e){
+            var sDate = s.split(" ");
+            console.log(sDate);
+            var sYear = sDate[0].split("-")[0];
+            var sMon = sDate[0].split("-")[1];
+            var sDay = sDate[0].split("-")[2];
+            var sHour = sDate[1].split(":")[0];
+            var sMin = sDate[1].split(":")[1];
+            //console.log(sYear,sMon,sDay,sHour,sMin);
+            //var sSec = sDate[1].split(":")[2];
+
+            var eDate = e.split(" ");
+            var eYear = eDate[0].split("-")[0];
+            var eMon = eDate[0].split("-")[1];
+            var eDay = eDate[0].split("-")[2];
+            var eHour = eDate[1].split(":")[0];
+            var eMin = eDate[1].split(":")[1];
+
+            var sMs = new Date(sYear,sMon,sDay,sHour,sMin);
+            var eMs = new Date(eYear,eMon,eDay,eHour,eMin);
+
+            var difMin = Math.floor(Math.abs(eMs-sMs)/1000/60)%60;
+            console.log(difMin);
+            difMin<30 ? difMin = 0 : difMin = 0.5;
+            console.log(difMin);
+            var difHour = Math.floor(Math.abs(eMs-sMs)/1000/60/60)+difMin;
+            return difHour;
+        }
+        var res = countHour(start, end);
+        console.log(res);
+    </script>
+ </body>
+</html>

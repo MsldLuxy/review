@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+ 
+    <script>
+        var arr1 = ['a','A',3,'d','C',2,'e'];
+        var arr2 = [4,'b','d','B','a',3];
+        var str1 = 'aiovhna31';
+        var str2 = 'ajv2n;a1';
+
+        var arr3 = arr1.concat(arr2);
+        var str3 = str1.concat(str2);
+
+        console.log(arr3);//["a", "A", 3, "d", "C", 2, "e", 4, "b", "d", "B", "a", 3]
+        console.log(str3);//aiovhna31ajv2n;a1
+
+        console.log(arr3.sort());//[2, 3, 3, 4, "A", "B", "C", "a", "a", "b", "d", "d", "e"]
+
+
+        //去重1:arr3已排序
+        var newArr = [];
+        for(var i=0;i<arr3.length;i++){
+            if(arr3[i]!=arr3[i+1]){
+                newArr.push(arr3[i]);
+            }
+        }
+        console.log(newArr);
+
+        //去重2：arr3已排序
+        var newArr1 = [arr3[0]];
+        for(var i=1;i<arr3.length;i++){
+            if(arr3[i]!=newArr1[newArr1.length-1]){
+                newArr1.push(arr3[i]);
+            }
+        }
+        console.log(newArr1);
+
+        //去重3(推荐)
+        var newArr2 = [];
+        for(var i=0;i<arr3.length;i++){
+            if(newArr2.indexOf(arr3[i])==-1){
+                newArr2.push(arr3[i]);
+            }
+        }
+        console.log(newArr2);
+
+        //去重4
+        var newArr3 = [];
+        for(var i=0;i<arr3.length;i++){
+            if(arr3.indexOf(arr3[i])==i){
+                newArr3.push(arr3[i]);
+            }
+        }
+        console.log(newArr3);
+
+        //去重5
+        var newArr4 = new Set(arr3);
+        console.log(newArr4);
+
+
+        var arr4 = ["a", "A", 3, "d", "C", 2, "e", 4, "b", "d", "B", "a", 3];
+        var str4 = "aiovhna31ajv2n;a1";
+        var a4 = str4.split("");//字符串->数组
+        console.log(a4)
+        var a5 = a4.slice(0,2);//截取
+        console.log(a5);
+        arr4.splice(1,2);//删除
+        console.log(arr4);
+        var newStr = arr4.join("+");//数组->字符串
+        console.log(newStr);
+
+
+        var a1 = "abcfba",a2 = "bcholhad";
+        function f(str1,str2) {
+            //将字符串转化为数组
+            var arr1 = str1.split("");
+            var arr2 = str2.split("");
+            //拼接两个字符串
+            var concatArr = arr1.concat(arr2);
+            //去重
+            var uniqueArr1 = unique(arr1);
+            var uniqueArr2 = unique(arr2);
+            var uniqueConcatArr = unique(concatArr);
+
+            //将去重的数组中删掉两个字符串中都出现的字符
+            for(var i=0; i<uniqueArr1.length;i++){
+                for(var j=0;j<uniqueArr2.length;j++){
+                    if(uniqueArr2[j]==uniqueArr1[i]){
+                        uniqueConcatArr.splice(uniqueConcatArr.indexOf(uniqueArr1[i]),1);
+                    }
+                }
+            }
+            console.log(uniqueConcatArr);
+            for(i=uniqueConcatArr.length-1;i>=0;i--){
+                uniqueConcatArr.push(uniqueConcatArr[i]);
+            }
+            return uniqueConcatArr.join("");
+        }
+        //去重
+        function unique(arr){
+            var uniqueArr = [];
+            for(var i=0; i<arr.length; i++){
+                if(uniqueArr.indexOf(arr[i]) == -1){
+                    uniqueArr.push(arr[i]);
+                }
+            }
+            return uniqueArr;
+        }
+        console.log(f(a1,a2));
+    </script>
+ </body>
+</html>
