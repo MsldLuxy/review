@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="不会爬树的鱼">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Title</title>
+    <style>
+        body,div,ul,li,ol,p,span,h1,h2,h3,h4,h5,h6,a,img,table,form{margin:0;padding:0;}
+        body{font:16px/1.5 "Microsoft Yahei" ;}
+        ul{list-style:none;}
+        a{text-decoration:none;}
+        .clearfix:after{content:''; display:block; clear:both;}
+        
+    </style>
+ </head>
+ <body>
+ 
+    <script>
+        var arr = [7,6,5,4,3,2,1];
+        function getMaxProfit(arr) {
+            var len = arr.length;
+            if(!len) return 0;
+            var profit = 0;
+            var temp = arr[0];
+            for(var i=0; i<len; i++){
+                if (temp<arr[i]){
+                    profit += arr[i]-temp;
+                }
+                temp = arr[i];
+            }
+            return profit;
+        }
+        console.log(getMaxProfit(arr));
+    </script>
+ </body>
+</html>
